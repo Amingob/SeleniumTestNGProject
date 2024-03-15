@@ -11,6 +11,8 @@ import java.util.concurrent.TimeUnit;
 public class BaseTest {
 
     public WebDriver wdriver;
+    public String txtEmailAddress = "justin@gmail.com";
+    public String txtPassWord = "12345";
 
     @BeforeMethod
     public void setUp(){

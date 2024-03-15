@@ -30,7 +30,17 @@ public class TutorialsNinjaLoginPage {
     @CacheLookup
     private WebElement loginLink;
 
-    @FindBy(xpath="")
+    @FindBy(xpath="//*[@id=\"input-email\"]")
+    @CacheLookup
+    private WebElement submitEmailAddress;
+
+    @FindBy(xpath="//*[@id=\"input-password\"]")
+    @CacheLookup
+    private WebElement submitPassWord;
+
+    @FindBy(xpath="//*[@id=\"content\"]/div/div[2]/div/form/input")
+    @CacheLookup
+    private WebElement loginBtn;
 
     public void clickMyAccountLink(){
 
@@ -59,6 +69,53 @@ public class TutorialsNinjaLoginPage {
                 }
         );
         loginLink.click();
+
+    }
+
+    public void submitEmailAddress(String emailAddress){
+
+        Wait<WebDriver> wait =  new FluentWait<>(ldriver)
+                .withTimeout(Duration.ofSeconds(2))
+                .pollingEvery(Duration.ofMillis(300))
+                .ignoring(ElementNotInteractableException.class);
+        wait.until(
+                d -> { submitEmailAddress.isDisplayed();
+                    return true;
+                }
+        );
+        submitEmailAddress.clear();
+        submitEmailAddress.sendKeys(emailAddress);
+
+    }
+
+    public void submitPassWord(String passWord){
+
+        Wait<WebDriver> wait =  new FluentWait<>(ldriver)
+                .withTimeout(Duration.ofSeconds(2))
+                .pollingEvery(Duration.ofMillis(300))
+                .ignoring(ElementNotInteractableException.class);
+        wait.until(
+                d -> { submitPassWord.isDisplayed();
+                    return true;
+                }
+        );
+        submitPassWord.clear();
+        submitPassWord.sendKeys(passWord);
+
+    }
+
+    public void submitLogin(){
+
+        Wait<WebDriver> wait =  new FluentWait<>(ldriver)
+                .withTimeout(Duration.ofSeconds(2))
+                .pollingEvery(Duration.ofMillis(300))
+                .ignoring(ElementNotInteractableException.class);
+        wait.until(
+                d -> { loginBtn.isDisplayed();
+                    return true;
+                }
+        );
+        loginBtn.click();
 
     }
 }

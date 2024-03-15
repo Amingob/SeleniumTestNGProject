@@ -13,6 +13,9 @@ public class LoginTestUdemy extends BaseTest {
         TutorialsNinjaLoginPage tutorialsNinjaLoginPage = new TutorialsNinjaLoginPage(wdriver);
         tutorialsNinjaLoginPage.clickMyAccountLink();
         tutorialsNinjaLoginPage.clickLoginLink();
+        tutorialsNinjaLoginPage.submitEmailAddress(txtEmailAddress);
+        tutorialsNinjaLoginPage.submitPassWord(txtPassWord);
+        tutorialsNinjaLoginPage.submitLogin();
 
     }
 }
